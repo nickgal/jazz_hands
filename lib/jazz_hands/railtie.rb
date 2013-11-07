@@ -35,9 +35,9 @@ module JazzHands
         # calculating line length.
 
         color = -> { Pry.color && JazzHands.colored_prompt }
-        red  = ->(text) { color[] ? "\001\e[0;31m\002#{text}\001\e[0m\002" : text.to_s }
-        blue = ->(text) { color[] ? "\001\e[0;34m\002#{text}\001\e[0m\002" : text.to_s }
-        bold = ->(text) { color[] ? "\001\e[1m\002#{text}\001\e[0m\002"    : text.to_s }
+        red  = ->(text) { color[] ? "\e[0;31m#{text}\e[0m" : text.to_s }
+        blue = ->(text) { color[] ? "\e[0;34m#{text}\e[0m" : text.to_s }
+        bold = ->(text) { color[] ? "\e[1m#{text}\e[0m"    : text.to_s }
 
         separator = -> { red.(JazzHands.prompt_separator) }
         name = app.class.parent_name.underscore
